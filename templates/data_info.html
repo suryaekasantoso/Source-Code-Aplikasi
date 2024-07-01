@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Information - Fertility Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>KLASIFIKASI UNTUK PREDIKSI DIAGNOSIS FERTILITY</h1>
+        <p>
+            Fertilitas atau kesuburan adalah kemampuan organisme untuk mereproduksi dan menghasilkan keturunan yang sehat. Pada manusia, fertilitas mengacu pada kapasitas pria dan wanita untuk berkontribusi dalam proses pembuahan yang menghasilkan kehamilan dan kelahiran anak yang sehat. Kesuburan merupakan hasil dari berbagai faktor yang kompleks, termasuk kesehatan reproduksi, gaya hidup, dan faktor genetik.
+        </p>
+        <h2>TUJUAN</h2>
+        <p>
+            Tujuan dari analisis dataset ini adalah untuk mengeksplorasi dan memahami faktor-faktor yang mempengaruhi fertilitas pria, dengan menganalisis data ini, kita bisa mengetahui variabel-variabel mana yang memiliki pengaruh signifikan terhadap fertilitas. Membangun model prediksi, menggunakan data ini untuk melatih model machine learning yang dapat memprediksi diagnosis fertilitas (normal atau altered) berdasarkan fitur-fitur yang ada. 
+        </p>
+        <h2>DATA FERTILITY YANG DIGUNAKAN</h2>
+        <p>
+            Data yang digunakan di analisis ini adalah Dataset Fertility yang didapat di https://archive.ics.uci.edu/dataset/244/fertility <br>
+            Setiap entri dalam dataset ini mencakup berbagai parameter yang dapat mempengaruhi fertilitas pria, seperti: <br><br>
+            1. Season (Musim saat analisis dilakukan) <br>
+            Musim dapat mempengaruhi fertilitas melalui faktor-faktor seperti suhu lingkungan dan tingkat aktivitas fisik. Perubahan musim dapat mempengaruhi fertilitas melalui beberapa cara, seperti perubahan suhu lingkungan, panjang hari, dan aktivitas fisik yang mungkin bervariasi sepanjang tahun. Misalnya, suhu tinggi di musim panas dapat mempengaruhi produksi sperma, sedangkan musim dingin mungkin berhubungan dengan pola aktivitas yang berbeda.<br>
+            - Kategori: Winter, Spring, Summer, Fall <br>
+            - Nilai terkode: -1 (Winter), -0.33 (Spring), 0.33 (Summer), 1 (Fall) <br>
+            - Tipe data: Numerik kontinu <br><br>
+            2. Age (Usia saat analisis) <br>
+            Usia merupakan faktor penting dalam fertilitas. Pada pria, kualitas sperma cenderung menurun seiring bertambahnya usia, yang dapat mempengaruhi kemampuan untuk menghasilkan keturunan. Selain itu, usia juga bisa berpengaruh pada kesehatan umum dan produksi hormon yang berkaitan dengan reproduksi. Biasanya rentang usia 18-36 dianggap sebagai usia reproduktif pria.<br>
+            - Rentang usia: 18-36 tahun<br>
+            - Nilai terkode: 0 (rentang usia tidak dispesifikkan), 1 (rentang usia tidak dispesifikkan)<br>
+            - Tipe data: Numerik kontinu<br>
+            - Catatan: Biasanya rentang usia 18-36 dianggap sebagai usia reproduktif pria.<br><br>
+            3. Child Diseases (Penyakit masa kecil)<br>
+            - Penyakit tertentu pada masa kecil dapat mempengaruhi perkembangan sistem reproduksi. Penyakit seperti cacar air, campak, gondongan, dan polio yang dialami pada masa kecil dapat mempengaruhi perkembangan sistem reproduksi. Misalnya, gondongan yang terjadi setelah pubertas dapat menyebabkan orkitis, yang dapat mempengaruhi produksi sperma.<br>
+            - Penyakit yang termasuk: Cacar air, campak, gondongan, polio<br>
+            - Nilai terkode: 0 (ya, pernah menderita penyakit masa kecil), 1 (tidak, tidak pernah menderita penyakit masa kecil)<br>
+            - Tipe data: Kategorikal biner<br><br>
+            4. Accident (Kecelakaan atau trauma serius)<br>
+            Trauma fisik yang serius, terutama yang melibatkan area panggul atau organ reproduksi, dapat mempengaruhi fertilitas. Trauma juga bisa menyebabkan stres psikologis, yang dapat mempengaruhi keseimbangan hormonal dan fungsi reproduksi.<br>
+            - Nilai terkode: 0 (ya, pernah mengalami kecelakaan atau trauma serius), 1 (tidak, tidak pernah mengalami kecelakaan atau trauma serius)<br>
+            - Tipe data: Kategorikal biner<br><br>
+            5. Surgical Intervention (Intervensi bedah)<br>
+            Operasi, khususnya yang melibatkan sistem reproduksi seperti vasektomi atau operasi hernia inguinalis, dapat mempengaruhi fertilitas. Operasi lainnya, yang menyebabkan stres fisik yang signifikan, juga dapat mempengaruhi kesehatan reproduksi.<br>
+            - Nilai terkode: 0 (ya, pernah menjalani intervensi bedah), 1 (tidak, tidak pernah menjalani intervensi bedah)<br>
+            - Tipe data: Kategorikal biner<br><br>
+            6. High Fevers (Demam tinggi dalam setahun terakhir)<br>
+            Demam tinggi dapat mempengaruhi produksi sperma dan kualitasnya karena suhu tubuh yang meningkat dapat merusak spermatogenesis. Efek ini bisa sementara atau permanen tergantung pada durasi dan keparahan demam.<br>
+            - Kategori: Kurang dari tiga bulan lalu, lebih dari tiga bulan lalu, tidak pernah<br>
+            - Nilai terkode: -1 (kurang dari tiga bulan lalu), 0 (lebih dari tiga bulan lalu), 1 (tidak pernah)<br>
+            - Tipe data: Kategorikal ordinal<br><br>
+            7. Alcohol (Frekuensi konsumsi alkohol)<br>
+            Konsumsi alkohol berlebihan dapat mempengaruhi produksi hormon dan kualitas sperma. Alkohol juga dapat menyebabkan kerusakan hati, yang berperan dalam metabolisme hormon, dan mengganggu keseimbangan hormonal yang penting untuk fungsi reproduksi yang normal.<br>
+            - Kategori: Beberapa kali sehari, setiap hari, beberapa kali seminggu, sekali seminggu, hampir tidak pernah atau tidak pernah<br>
+            - Nilai terkode: 0, 1 (kategorisasi frekuensi tidak dijelaskan lebih lanjut)<br>
+            - Tipe data: Kategorikal ordinal<br><br>
+            8. Smoking (Kebiasaan merokok)<br>
+            Merokok diketahui memiliki efek negatif pada kualitas sperma, termasuk jumlah sperma, motilitas sperma (kemampuan bergerak), dan morfologi sperma (bentuk dan struktur). Bahan kimia dalam rokok dapat menyebabkan stres oksidatif dan kerusakan DNA pada sperma.<br>
+            - Kategori: Tidak pernah, kadang-kadang, setiap hari<br>
+            - Nilai terkode: -1 (tidak pernah), 0 (kadang-kadang), 1 (setiap hari)<br>
+            - Tipe data: Kategorikal ordinal<br><br>
+            9. Hrs Sitting (Jumlah jam duduk per hari)<br>
+            Duduk terlalu lama dapat mempengaruhi aliran darah ke area panggul dan testis, yang dapat mempengaruhi produksi sperma. Gaya hidup yang kurang aktif juga bisa terkait dengan masalah kesehatan lain seperti obesitas, yang diketahui berpengaruh negatif pada fertilitas.<br>
+            - Rentang waktu: 0-16 jam<br>
+            - Nilai terkode: 0, 1 (kategorisasi tidak dijelaskan lebih lanjut)<br>
+            - Tipe data: Numerik kontinu<br><br><br><br>
+            Diagnosis (Target)<br>
+            Dengan menganalisis data ini, kita dapat mengidentifikasi pola dan hubungan antara berbagai faktor tersebut dan fertilitas pria, serta memberikan wawasan yang dapat digunakan untuk intervensi medis atau perubahan gaya hidup guna meningkatkan fertilitas. Analisis yang cermat terhadap dataset ini tidak hanya membantu dalam memahami kondisi fertilitas saat ini, tetapi juga dapat berkontribusi pada penelitian lebih lanjut di bidang kesehatan reproduksi.<br>
+            - Kategori: Normal (N), altered (O)<br>
+            - Tipe data: Kategorikal nominal<br>
+
+        </p>
+        <a href="/">Back to Predict</a>
+    </div>
+</body>
+</html>
